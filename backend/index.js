@@ -1,6 +1,6 @@
 const express = require('express');
 const dbConnect = require('./database/index');
-const { PORT, ALLOWED_ORIGIN } = require('./config/index');
+const { PORT } = require('./config/index');
 const router = require('./routes/index');
 const errorHandler = require('./middlewares/errorHandler');
 const cookieParser = require('cookie-parser');
@@ -8,8 +8,7 @@ const cors = require('cors')
 
 const corsOptions = {
     credentials: true,
-    'Access-Control-Allow-Origin': 'http://localhost:5173',
-    origin: [ALLOWED_ORIGIN,'http://localhost:5173']
+    origin: ['https://go-blogs-iq7w.vercel.app/']
 }
 
 const app = express();
