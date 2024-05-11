@@ -8,7 +8,7 @@ const cors = require('cors')
 
 const corsOptions = {
     credentials: true,
-    origin: [ALLOWED_ORIGIN,'http://localhost:5173']
+    origin: [ALLOWED_ORIGIN,'http://localhost:5173'],
 }
 
 const app = express();

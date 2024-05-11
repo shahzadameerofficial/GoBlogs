@@ -83,11 +83,15 @@ const authController = {
         // Setting Tokens to Cookies
         res.cookie('accessToken', accessToken, {
             maxAge: 1000 * 60 * 60 * 24,
-            httpOnly: true
+            httpOnly: true,
+            sameSite: "None",
+            secure: true
         })
         res.cookie('refreshToken ', refreshToken, {
             maxAge: 1000 * 60 * 60 * 24,
-            httpOnly: true
+            httpOnly: true,
+            sameSite: "None",
+            secure: true
         })
         // 6. Response - Send response to the user after successful registration.
 
@@ -162,11 +166,15 @@ const authController = {
         // Setting Tokens to Cookies
         res.cookie('accessToken', accessToken, {
             maxAge: 1000 * 60 * 60 * 24,
-            httpOnly: true
+            httpOnly: true,
+            sameSite: "None",
+            secure: true
         })
         res.cookie('refreshToken ', refreshToken, {
             maxAge: 1000 * 60 * 60 * 24,
-            httpOnly: true
+            httpOnly: true,
+            sameSite: "None",
+            secure: true
         })
 
         // 4. Response
@@ -228,8 +236,16 @@ const authController = {
             const refreshToken = JWTService.signRefreshToken({ _id: id }, '60m');
 
             await RefreshToken.updateOne({ _id: id }, { token: refreshToken })
-            res.cookie('accessToken', accessToken, { maxAge: 1000 * 60 * 60 * 24, httpOnly: true })
-            res.cookie('refreshToken', refreshToken, { maxAge: 1000 * 60 * 60 * 24, httpOnly: true })
+            res.cookie('accessToken', accessToken, {
+                maxAge: 1000 * 60 * 60 * 24, httpOnly: true,
+                sameSite: "None",
+                secure: true
+            })
+            res.cookie('refreshToken', refreshToken, {
+                maxAge: 1000 * 60 * 60 * 24, httpOnly: true,
+                sameSite: "None",
+                secure: true
+            })
         } catch (error) {
             return next(error)
         }
@@ -263,7 +279,7 @@ const authController = {
             }
             return next(error)
         }
-        
+
         // Delete User and Its Blogs
         try {
             await User.deleteOne({ _id: userId });
@@ -276,7 +292,7 @@ const authController = {
             name: null,
             email: null
         }
-        
+
         res.clearCookie('accessToken');
         res.clearCookie('refreshToken');
         return res.status(200).json({ user, auth: false })
