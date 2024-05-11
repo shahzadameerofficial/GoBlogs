@@ -10,7 +10,7 @@ const router = express.Router();
 router.get('/', (req, res)=> res.json({msg: 'Welcome to the GoBlogs Api. Enter the corresponding endpoint to get results.'}))
 
 
-module.exports = router
+
 // user
 // register
 router.post('/register', authController.register)
@@ -63,3 +63,4 @@ router.get('/comment/:id', authHandler, commentController.getBlogComments)
 // delete comment
 router.delete('/comment/:id', authHandler, commentController.deleteCommentById)
 
+module.exports = router
