@@ -8,6 +8,7 @@ const commentController = require('../controllers/commentController');
 const router = express.Router();
 
 router.get('/', (req, res)=> res.json({msg: 'Welcome to the GoBlogs Api. Enter the corresponding endpoint to get results.'}))
+router.get('/test', (req, res)=> res.json({msg: 'This is test page'}))
 
 
 
