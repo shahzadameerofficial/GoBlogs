@@ -8,7 +8,8 @@ const cors = require('cors')
 
 const corsOptions = {
     credentials: true,
-    origin: ['https://go-blogs-iq7w.vercel.app/']
+    origin: '*',
+    'Access-Control-Allow-Origin': '*'
 }
 
 const app = express();
