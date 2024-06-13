@@ -8,7 +8,9 @@ const cors = require('cors');
 const cloudinary = require('cloudinary').v2;
 
 const corsOptions = {
-    credentials: true
+    credentials: true,
+    origin: 'https://go-blogs.vercel.app/',
+    'Access-Control-Allow-Origin': 'https://go-blogs.vercel.app/'
 }
 cloudinary.config({ 
     cloud_name: CLOUDINARY_NAME, 
