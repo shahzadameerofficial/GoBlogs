@@ -1,15 +1,21 @@
 const express = require('express');
 const dbConnect = require('./database/index');
-const { PORT } = require('./config/index');
+const { PORT, CLOUDINARY_NAME, CLOUDINARY_KEY, CLOUDINARY_SECRET } = require('./config/index');
 const router = require('./routes/index');
 const errorHandler = require('./middlewares/errorHandler');
 const cookieParser = require('cookie-parser');
-const cors = require('cors')
+const cors = require('cors');
+const cloudinary = require('cloudinary').v2;
 
 const corsOptions = {
     credentials: true,
     origin: 'https://go-blogs-iq7w.vercel.app'
 }
+cloudinary.config({ 
+    cloud_name: CLOUDINARY_NAME, 
+    api_key: CLOUDINARY_KEY, 
+    api_secret: CLOUDINARY_SECRET
+});
 
 const app = express();
 
